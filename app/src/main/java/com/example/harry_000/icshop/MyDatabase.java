@@ -1,47 +1,60 @@
 package com.example.harry_000.icshop;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 /**
- * Created by harry_000 on 10/15/2015.
+ * Created by Felker on 10/7/2015.
  */
-public class MyDatabase  extends SQLiteAssetHelper {
 
+public class MyDatabase extends SQLiteAssetHelper {
 
-        private static final String DATABASE_NAME = "IC_Retail.sqlite";
-        private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "IC_Retail.sqlite";
+    private static final int DATABASE_VERSION = 1;
 
-        public MyDatabase(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public MyDatabase(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
-            // you can use an alternate constructor to specify a database location
-            // (such as a folder on the sd card)
-            // you must ensure that this folder is available and you have permission
-            // to write to it//super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
+        // you can use an alternate constructor to specify a database location
+        // (such as a folder on the sd card)
+        // you must ensure that this folder is available and you have permission
+        // to write to it
+        //super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
 
+    }
+
+    public List<Brand> getAllBrands() {
+
+        List<Brand> Brands = new ArrayList<Brand>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+        String[] sqlSelect = {"0 _id", "ID", "Name"};
+        String sqlTables = "Brand";
+        qb.setTables(sqlTables);
+        Cursor c = qb.query(db, sqlSelect, null, null,
+                null, null, null);
+
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+            Brand brand = cursorToBrand(c);
+            Brands.add(brand);
+            c.moveToNext();
         }
-
-        public List<Brand> getAllBrands() {
-
-            List<Brand> Brands = new ArrayList<Brand>();
-
-            SQLiteDatabase db = getReadableDatabase();
-            SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-
-            String[] sqlSelect = {"0 _id", "ID", "Name"};
-            String sqlTables = "Brand";
-            qb.setTables(sqlTables);
-            Cursor c = qb.query(db, sqlSelect, null, null,
-                    null, null, null);
-
-            c.moveToFirst();
-            while (!c.isAfterLast()) {
-                Brand brand = cursorToBrand(c);
-                Brands.add(brand);
-                c.moveToNext();
-            }
-            // make sure to close the cursor
-            c.close();
-            return Brands;
-        }
+        // make sure to close the cursor
+        c.close();
+        return Brands;
+    }
 
     private Brand cursorToBrand(Cursor cursor) {
         Brand brand = new Brand();
