@@ -7,4 +7,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_brand_stores">BrandStoresActivity</string>
     <string name="title_activity_store_detail">StoreDetailActivity</string>
+    <string name="action_Brand">Brand List</string>
+    <string name="action_Category">category List</string>
 </resources>

@@ -20,7 +20,7 @@ public class BrandListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_brand_list);
+        setContentView(android.R.layout.activity_list_item);
 
         db = new MyDatabase(this);
         Brands = db.getAllBrands(); // you would not typically call this on the main thread
@@ -58,34 +58,5 @@ public class BrandListActivity extends AppCompatActivity {
         db.close();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case  R.id.action_Brand:
-                //Create Intent for Shopping List Activity
-                Intent listIntent = new Intent(this,BrandListActivity.class);
-                //Start Product Activity
-                startActivity(listIntent);
-                return true;
-            case R.id.action_Category:
-                //Create Intent for Product Activity
-
-                //Intent productIntent = new Intent(this,ProduceListActivity.class);
-                //Start Product Activity
-                //startActivity(productIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
