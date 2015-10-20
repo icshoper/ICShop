@@ -20,6 +20,18 @@
             android:name=".categorySearchActivity"
             android:label="@string/title_activity_category_search" >
         </activity>
+        <activity
+            android:name=".BrandListActivity"
+            android:label="@string/title_activity_brand_list" >
+        </activity>
+        <activity
+            android:name=".BrandStoresActivity"
+            android:label="@string/title_activity_brand_stores" >
+        </activity>
+        <activity
+            android:name=".StoreDetailActivity"
+            android:label="@string/title_activity_store_detail" >
+        </activity>
     </application>
 
 </manifest>
