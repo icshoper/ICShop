@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:_alignParentTop="True"
+        android:background="#FFFFFF"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_alignPareentTop="true"
+        android:layout_toLeftOf="@+id/search_title"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup_search"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/searchView"
+        android:layout_alignLeft="@+id/view1"
+        android:layout_alignStart="@+id/view1">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brand"
+            android:id="@+id/radioButton_Brand" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store"
+            android:id="@+id/radioButton_Store"
+            android:layout_marginLeft="50dp" />
+
+    </RadioGroup>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/listView"
+        android:layout_marginTop="25dp"
+        android:divider="#E6E6E6"
+        android:layout_below="@+id/radiogroup_search"
+        android:layout_alignLeft="@+id/radiogroup_search"
+        android:layout_alignStart="@+id/radiogroup_search"
+        />
+
+
+</RelativeLayout>
