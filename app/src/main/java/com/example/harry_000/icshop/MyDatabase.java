@@ -243,4 +243,31 @@ public class MyDatabase extends SQLiteAssetHelper {
         c.close();
         return strCategoryList;
     }
+
+    public Cursor getBrandMatches(String query, String[] columns) {
+        String selection = "Name" + " MATCH ?";
+        String[] selectionArgs = new String[]{query + "*"};
+
+        return query(selection, selectionArgs, columns);
+    }
+
+    private Cursor query(String selection, String[] selectionArgs, String[] columns) {
+        SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        String sqlTables = "Brand";
+        builder.setTables(sqlTables);
+
+        Cursor cursor = builder.query(getReadableDatabase(),
+                columns, selection, selectionArgs, null, null, null);
+
+        if (cursor == null) {
+            return null;
+        } else if (!cursor.moveToFirst()) {
+            cursor.close();
+            return null;
+        }
+        return cursor;
+
+    }
+
+
 }

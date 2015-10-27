@@ -9,4 +9,5 @@
     <string name="title_activity_store_detail">StoreDetailActivity</string>
     <string name="action_Brand">Brand List</string>
     <string name="action_Category">category List</string>
+    <string name="search_activity">searchActivity</string>
 </resources>
